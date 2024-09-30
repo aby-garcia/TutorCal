@@ -1,0 +1,32 @@
+{
+    "manifest_version": 3,
+    "name": "TutorCal",
+    "version": "1.0",
+    "description": "Scrapes tutoring session details and adds them to Google Calendar",
+    "permissions": [
+      "activeTab",
+      "storage",
+      "scripting",
+      "identity"
+    ],
+    "host_permissions": [
+        "https://www.googleapis.com/*"  
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_popup": "index.html"
+    },
+    "content_scripts": [
+      {
+        "matches": ["*://utdirect.utexas.edu/*"],
+        "js": ["script.js"]
+      }
+    ],
+    "oauth2": {
+      "client_id": "583089261090-4hma3qjid1vsophe6i0gpetpn5t0rheb.apps.googleusercontent.com",
+      "scopes": ["https://www.googleapis.com/auth/calendar.events"]
+    }
+  }
+  
